@@ -1,0 +1,50 @@
+<div class="header">
+  <!-- タイトルとサイトマップ -->
+  <div class="header-top">
+    <h1 class="font11">{{title}}</h1>
+    <ul class="font11 flex-row">
+      <li><span>○</span><a href="//www.goobike.com/info/guide.html">サイトマップ</a></li>
+      <li><span>□</span><a href="//goo.force.com/s/contactsupport">お問い合わせ</a></li>
+    </ul>
+  </div>
+
+  <!-- イメージロゴと広告 -->
+  <div class="header-middle">
+    <div class="header-logo">
+      <a href="//www.goobike.com/smp/index.html">
+        <img src="//www.goobike.com/smp/img/logo.gif" width="218px" height="62px">
+      </a>
+    </div>
+    <div>
+      <a target="_blank" href="https://googleads.g.doubleclick.net/pcs/click?xai=AKAOjstisnLvuakm9eluzxy24UVbPkKXXjZUVx2J9WOq7Fg6lqaZQqsTbYblpE9x50hNT0xzVb5_Ssn7ppLQvyE3N1-64g6RV2ENK_BPic2icXASrm1krI-5X_a0-7RItaP-JXEoL4laky94INDGRdG6YyhEa0zTXigjxUFKpFif6pJaUcTIeZyzhBJk2Ho_qAOVvkzySeS3hZuw2KYbqH2FBSb2R2VTfBfxVO43hm8UQtQxyn_1wmUbn4LAX6ui1P2lSKQP9MTI6vSYOkjT&sai=AMfl-YTL3lDMh-x2ODWupI-MiQGDFBWPOrqSnqEv9I7TAfxEYfYiwpAOILW3RPutFHGlKnSxkBRgvDhgqQODCtDVRVxIHVNrVXhFC6uHB14OOvch2Fv7deemKOW54UydqsK8SZxd&sig=Cg0ArKJSzHJXpnWO3vP3&adurl=http://www.bikebros.co.jp/vb_img/tieup/sports/over-slider/&nm=10">
+        <img src="https://tpc.googlesyndication.com/simgad/15940080912276177386">
+      </a>
+    </div>
+  </div>
+
+  <!-- ナビバー -->
+  <div class="menu-bar">
+    <ul class="menu-ul">
+      <li class="menu-list font13" *ngFor="let menu of menuList">
+        <a *ngIf="menu.link" href="{{menu.link}}" class="menu-link">{{menu.title}}</a>
+        <div (click)="onClickView(menu.list)" *ngIf="!menu.link">{{menu.title}} <span class="sub-btn">▼</span></div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- サブナビバー -->
+  <div class="sub-ber">
+    <ul class="sub-ul">
+      <li *ngFor="let list of viewList" class="sub-list font13">
+        <a href="{{list.link}}">{{list.title}}</a>
+       </li>
+    </ul>
+  </div>
+
+  <!-- ルート表示 -->
+  <div class="header-root">
+    <a href="">バイクTOP</a>
+  </div>
+
+
+</div>

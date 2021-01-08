@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'cyou-test';
+  title = 'バイクの整備・メンテナンス店を探すなら【グーバイク】';
 }
