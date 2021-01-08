@@ -1,1 +1,46 @@
 /* You can add global styles to this file, and also import other style files */
+* {
+  background: none;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: #fff;
+  font-family: Meiryo,YuGothic,'Hiragino Kaku Gothic Pro','MS PGothic',sans-serif;
+  color: #000;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.5;
+  -webkit-text-size-adjust: none;
+  overflow-y: scroll;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+  cursor: pointer;
+}
+
+ul {
+  list-style: none;
+}
+
+.font11 {
+  font-size: 11px;
+}
+
+.font13 {
+  font-size: 13px;
+}
+
+.flex-row {
+  display: flex;
+}
+
+.grid-row {
+  display: grid;
+}
