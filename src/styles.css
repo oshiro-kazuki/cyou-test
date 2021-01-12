@@ -37,6 +37,18 @@ ul {
   font-size: 13px;
 }
 
+.font15 {
+  font-size: 15px;
+}
+
+.font17 {
+  font-size: 17px;
+}
+
+.font20 {
+  font-size: 20px;
+}
+
 .flex-row {
   display: flex;
 }
