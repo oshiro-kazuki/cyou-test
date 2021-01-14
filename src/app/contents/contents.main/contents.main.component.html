@@ -3,6 +3,7 @@
     強い味方
   </div>
 
+
   <div class="area-search">
     <div class="area-title">
       <h2>お店をエリアから探す</h2>
@@ -13,28 +14,29 @@
       <div class="areas-left areas-padding">
         <div *ngFor="let a of areasL" class="area flex-row">
           <h3 class="font17">{{a.area}}</h3>
+
           <div class="flex-row kenmei">
-            <a *ngFor="let b of a.kenmei" class="font15">{{b.title}}</a>
+            <a *ngFor="let b of a.kenmei" href="{{b.link}}" class="font15">{{b.title}}</a>
           </div>
         </div>
       </div>
-  
+
       <div class="areas-right areas-padding">
         <div *ngFor="let a of areasR" class="area flex-row">
           <h3 class="font17">{{a.area}}</h3>
+
           <div class="flex-row kenmei">
-            <a *ngFor="let b of a.kenmei" class="font15">{{b.title}}</a>
+            <a *ngFor="let b of a.kenmei" href="{{b.link}}" class="font15">{{b.title}}</a>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="area-map font20" >
-      <a><span class="material-icons">
+    <a class="area-map font20"><span class="material-icons">
         room
-        </span>現在地から探す</a>
-    </div>
+      </span>現在地から探す</a>
   </div>
+
 
   <div class="menu-search">
     <div class="area-title">
@@ -43,8 +45,170 @@
     </div>
 
     <div class="search-menu-list">
+      <div class="grid-brock">
+        <a *ngFor="let m of serviceMenu" href="{{m.link}}" class="search-menu font20">{{m.title}}<span
+            class="font20">&gt;</span></a>
+      </div>
+    </div>
+  </div>
 
+
+  <div class="main-review">
+    <div class="area-title">
+      <h2>新着レビュー</h2>
+      <div class="orange-line"></div>
     </div>
 
+    <div class="review-panels">
+      <div class="panel-area">
+        <div *ngFor="let p of reviewListView(); let i = index" [className]="i < 4 ? 'panel' : 'panel1'">
+          <a class="review-panel" href="{{p.link}}">
+            <div class="review-image" style="background-image: url({{p.image}});"></div>
+            <div class="review-contents">
+              <h5 class="font16 review-name">{{p.name}}</h5>
+              <div class="review-star font18 flex-row">
+                <div class="flex-row star-area">
+                  <img src="../../../assets/img/star0.PNG" class="star0" *ngFor="let s of setStar()">
+                  <!-- <img src="../../../assets/img/star1.PNG" class="star1" *ngFor="let s of reviewStar(p.hoshi)"> -->
+                </div>
+                {{p.hoshi | number:'1.1-1'}}
+              </div>
+
+              <div class="hosoku">{{p.service}}</div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="review-btn review-btn-left">&lt;</div>
+      <div class="review-btn review-btn-right" (click)="onClickNext()">&gt;</div>
+    </div>
   </div>
+
+
+  <div class="main-sagyou">
+    <div class="sagyou-title">
+      <div class="area-title">
+        <h2>作業実績</h2>
+        <div class="orange-line"></div>
+      </div>
+
+      <p class="font16">バイクの整備方法やカスタム例がわかる</p>
+    </div>
+
+    <div class="review-panels sagyou-panels">
+      <div class="sagyou-panel-area">
+        <div *ngFor="let p of sagyouzisseki; let i = index" [className]="i < 4 ? 'sagyou-panel' : 'panel1'">
+          <div class="panel2">
+            <a class="review-panel" href="{{p.menteLink}}">
+              <div class="review-image" style="background-image: url({{p.image}});">
+                <span>{{p.cont}}</span>
+              </div>
+              <div class="review-contents sagyou-contents">
+                <p class="sagyou-p">{{p.maker}}</p>
+                <p class="sagyou-p2">{{p.syasyu}}</p>
+                <h5 class="font15">{{p.messe}}</h5>
+                <h5 class="font15 sagyou-price">総額：{{p.price|currency:'JPY':true}}</h5>
+              </div>
+            </a>
+          </div>
+
+          <div class="sagyou-store-panel">
+            <a href="{{p.storeLink}}">
+              {{p.name}}<span>&gt;</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-btn sagyou-btn-left">&lt;</div>
+      <div class="review-btn sagyou-btn-right" (click)="onClickNext()">&gt;</div>
+
+      <div class="sagyou-motto">
+        <a href="/after/work?order=ranking">作業実績をもっと見る<span>&gt;</span></a>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="main-kensaku-zyouken">
+    <div class="area-title">
+      <h2>検索条件リンク</h2>
+      <div class="orange-line"></div>
+    </div>
+
+    <div class="kensaku-link-area">
+      <a *ngFor="let k of kensakuZyouken" href="{{k.link}}" class="link-form">{{k.title}}</a>
+    </div>
+  </div>
+  
+
+  <div class="main-sibori">
+    <div class="area-title">
+      <h2>お店を絞り込む</h2>
+      <div class="orange-line"></div>
+    </div>
+
+    <div class="sibori-area">
+      <div class="sibori-waku">
+        <div class="sibori-contents-areas">
+          <a class="sibori-contents">
+            <div class="sibori-content">
+              <div class="sibori-area-logo">□</div>
+              <div class="sibori-area-textarea">
+                <p>エリアを検索</p>
+                <span>全国</span>
+              </div>
+            </div>
+  
+            <div class="sibori-area-right">&gt;</div>
+          </a>
+
+          <a [className]="isAreaSelect ? 'sibori-contents-area' : 'sibori-contents-area1'"
+            (click)="onClickAreaSelect()"
+          >
+            <div class="sibori-content">
+              <div class="sibori-area-logo-area">✔︎</div>
+              <div class="sibori-area-textarea">
+                <p>現在地から選択</p>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <a class="sibori-contents">
+          <div class="sibori-content">
+            <div class="sibori-area-logo">□</div>
+            <div class="sibori-area-textarea">
+              <p>メニュー選択</p>
+              <span>選択なし</span>
+            </div>
+          </div>
+
+          <div class="sibori-area-right">&gt;</div>
+        </a>
+
+        <a class="sibori-contents">
+          <div class="sibori-content">
+            <div class="sibori-area-logo">□</div>
+            <div class="sibori-area-textarea">
+              <p>メーカー排気量選択</p>
+              <span>選択なし</span>
+            </div>
+          </div>
+
+          <div class="sibori-area-right">&gt;</div>
+        </a>
+      </div>
+    </div>
+
+    <a [className]="isAreaSelect ? 'area-map font20' : 'display-none'"><span class="material-icons">
+      room
+    </span>現在地から探す</a>
+
+    <a [className]="!isAreaSelect ? 'area-map font20' : 'display-none'"><span class="material-icons">
+      room
+    </span>お店を検索する</a>
+  </div>
+
 </div>

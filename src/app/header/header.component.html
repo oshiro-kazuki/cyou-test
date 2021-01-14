@@ -33,7 +33,7 @@
   </div>
 
   <!-- サブナビバー -->
-  <div class="sub-ber">
+  <div class="sub-ber" *ngIf="viewList">
     <ul class="sub-ul">
       <li *ngFor="let list of viewList" class="sub-list font13">
         <a href="{{list.link}}">{{list.title}}</a>
@@ -43,7 +43,11 @@
 
   <!-- ルート表示 -->
   <div class="header-root">
-    <a href="">バイクTOP</a>
+    <p *ngFor="let b = breadcumbs">
+      <span [routerLink]="b.url" routerLinkActive="router-link-active">
+        {{b.label}}
+      </span>
+    </p>
   </div>
 
 

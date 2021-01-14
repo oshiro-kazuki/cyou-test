@@ -8,7 +8,9 @@ const routes: Routes = [
   {
     path: 'contents', component: ContentsComponent,
     children: [
-      {path: '', component: ContentsMainComponent}
+      {
+        path: '', component: ContentsMainComponent,
+      }
     ]
   }
 ];
