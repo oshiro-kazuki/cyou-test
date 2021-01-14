@@ -1,7 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+// モーダルダイアログとして表示するコンポーネント
+import { ModalComponent } from '../../modal/area.modal/area.modal.component';
+// モーダルダイアログを閉じるためのイベントを管理するサービス
+import { ModalService } from '../../service/modal.service';
+
 import { areasLeft } from '../../area/left/areas';
 import { areasRight } from '../../area/right/areas';
-import { serviceMenu } from '../../service.menu/service-menu';
+import { serviceMenu } from '../../service-menu';
 import { reviewList } from '../../reviewList';
 import { sagyouzisseki } from '../../sagyouzisseki';
 import { kensakuZyouken } from '../../kensaku-zyouken';
@@ -12,8 +18,7 @@ import { kensakuZyouken } from '../../kensaku-zyouken';
   styleUrls: ['./contents.main.component.css'],
 })
 
-export class ContentsMainComponent {
-// export class ContentsMainComponent implements OnInit{
+export class ContentsMainComponent implements OnInit {
   areasL = areasLeft;
   areasR = areasRight;
   serviceMenu = serviceMenu;
@@ -24,10 +29,43 @@ export class ContentsMainComponent {
   sagyouzisseki = sagyouzisseki;
   kensakuZyouken = kensakuZyouken;
   isAreaSelect = true;
-  
-  constructor() {}
 
-  ngOnInit(): void {}
+
+  // モーダルダイアログが閉じた際のイベントをキャッチするための subscription
+  private subscription!: Subscription;
+  // ngComponentOutlet にセットするためのプロパティ
+  public modal: any = null;
+  
+  constructor(
+    private modalService: ModalService,
+  ) {}
+
+  ngOnInit(){
+     // モーダルダイアログを閉じた際のイベントを処理する
+     this.subscription = this.modalService.closeEventObservable$.subscribe(
+      () => {
+        // プロパティ modal に null をセットすることでコンポーネントを破棄する
+        // このタイミングで ModalComponent では ngOnDestroy が走る
+        this.modal = null;
+      }
+    );
+  }
+
+  /*終了処理 */
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
+
+   /*クリックイベント */
+  public onClick($event: any) {
+    this.setModal();
+  }
+
+  /*モーダルダイアログを表示する*/
+  private setModal() {
+    this.modal = ModalComponent;
+  }
+
 
   setStar() {
     const array = [];
