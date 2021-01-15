@@ -7,7 +7,7 @@
   <div class="area-search">
     <div class="area-title">
       <h2>お店をエリアから探す</h2>
-      <div class="orange-line"></div>
+      <!-- <div class="orange-line"></div> -->
     </div>
 
     <div class="areas">
@@ -56,12 +56,12 @@
   <div class="main-review">
     <div class="area-title">
       <h2>新着レビュー</h2>
-      <div class="orange-line"></div>
     </div>
 
     <div class="review-panels">
-      <div class="panel-area">
-        <div *ngFor="let p of reviewListView(); let i = index" [className]="i < 4 ? 'panel' : 'panel1'">
+      <div [ngClass]="{'panel-area': indexR0, 'panel-area1': indexR1}">
+      <!-- <div class="panel-area"> -->
+        <div *ngFor="let p of reviewList; let i = index" [className]="minR <= i && i <= maxR ? 'panel' : 'panel1'">
           <a class="review-panel" href="{{p.link}}">
             <div class="review-image" style="background-image: url({{p.image}});"></div>
             <div class="review-contents">
@@ -69,7 +69,6 @@
               <div class="review-star font18 flex-row">
                 <div class="flex-row star-area">
                   <img src="../../../assets/img/star0.PNG" class="star0" *ngFor="let s of setStar()">
-                  <!-- <img src="../../../assets/img/star1.PNG" class="star1" *ngFor="let s of reviewStar(p.hoshi)"> -->
                 </div>
                 {{p.hoshi | number:'1.1-1'}}
               </div>
@@ -80,25 +79,21 @@
         </div>
       </div>
 
-      <div class="review-btn review-btn-left">&lt;</div>
-      <div class="review-btn review-btn-right" (click)="onClickNext()">&gt;</div>
+      <div class="review-btn review-btn-left"  (click)="onClickReviewPrev()">&lt;</div>
+      <div class="review-btn review-btn-right" (click)="onClickReviewNext()">&gt;</div>
     </div>
   </div>
 
 
   <div class="main-sagyou">
-    <div class="sagyou-title">
       <div class="area-title">
         <h2>作業実績</h2>
-        <div class="orange-line"></div>
+        <p class="font16">バイクの整備方法やカスタム例がわかる</p>
       </div>
 
-      <p class="font16">バイクの整備方法やカスタム例がわかる</p>
-    </div>
-
     <div class="review-panels sagyou-panels">
-      <div class="sagyou-panel-area">
-        <div *ngFor="let p of sagyouzisseki; let i = index" [className]="i < 4 ? 'sagyou-panel' : 'panel1'">
+      <div [ngClass]="{'sagyou-panel-area': indexS0, 'panel-area1': indexS1}">
+        <div *ngFor="let p of sagyouzisseki; let i = index" [className]="minS <= i && i <= maxS ? 'sagyou-panel' : 'panel1'">
           <div class="panel2">
             <a class="review-panel" href="{{p.menteLink}}">
               <div class="review-image" style="background-image: url({{p.image}});">
@@ -121,8 +116,8 @@
         </div>
       </div>
 
-      <div class="review-btn sagyou-btn-left">&lt;</div>
-      <div class="review-btn sagyou-btn-right" (click)="onClickNext()">&gt;</div>
+      <div class="review-btn sagyou-btn-left" (click)="onClickSagyouPrev()">&lt;</div>
+      <div class="review-btn sagyou-btn-right" (click)="onClickSagyouNext()">&gt;</div>
 
       <div class="sagyou-motto">
         <a href="/after/work?order=ranking">作業実績をもっと見る<span>&gt;</span></a>
@@ -134,7 +129,6 @@
   <div class="main-kensaku-zyouken">
     <div class="area-title">
       <h2>検索条件リンク</h2>
-      <div class="orange-line"></div>
     </div>
 
     <div class="kensaku-link-area">
@@ -146,7 +140,6 @@
   <div class="main-sibori">
     <div class="area-title">
       <h2>お店を絞り込む</h2>
-      <div class="orange-line"></div>
     </div>
 
     <div class="sibori-area">

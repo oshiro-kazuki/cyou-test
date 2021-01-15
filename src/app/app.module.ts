@@ -15,7 +15,7 @@ import { HeaderComponent } from './header/header.component';
     BrowserModule,
     AppRoutingModule,
     IvyCarouselModule,
-  ],gi
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })
