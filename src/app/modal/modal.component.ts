@@ -1,26 +1,20 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 
 // モーダルダイアログを閉じるためのイベントを管理するサービス
-import { ModalService } from '../../service/modal.service';
+import { ModalService } from '../service/modal.service';
 
 @Component({
   selector: 'app-modal',
-  templateUrl: './area.modal.component.html',
-  styleUrls: ['./area.modal.component.css']
+  templateUrl: './modal.component.html',
+  styleUrls: ['./modal.component.css']
 })
-export class ModalComponent implements OnInit, OnDestroy {
 
-  /**
-   * コンストラクタ
-   */
+export class ModalComponent implements OnInit, OnDestroy {
   constructor(
     private modalService: ModalService
   ) {}
 
-  /**
-   * 初期処理
-   */
-  ngOnInit() {}
+  ngOnInit(): void {}
 
   /**
    * 終了処理

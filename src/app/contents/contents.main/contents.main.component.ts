@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 // モーダルダイアログとして表示するコンポーネント
-import { ModalComponent } from '../../modal/area.modal/area.modal.component';
+import { ModalComponent } from '../../modal/modal.component';
 // モーダルダイアログを閉じるためのイベントを管理するサービス
 import { ModalService } from '../../service/modal.service';
 
 import { areasLeft } from '../../area/left/areas';
 import { areasRight } from '../../area/right/areas';
-import { serviceMenu } from '../../service-menu';
-import { reviewList } from '../../reviewList';
-import { sagyouzisseki } from '../../sagyouzisseki';
-import { kensakuZyouken } from '../../kensaku-zyouken';
+import { serviceMenu } from '../../link-list/service-menu';
+import { reviewList } from '../../link-list/reviewList';
+import { sagyouzisseki } from '../../link-list/sagyouzisseki';
+import { kensakuZyouken } from '../../link-list/kensaku-zyouken';
 
 @Component({
   selector: 'app-contents-main',
