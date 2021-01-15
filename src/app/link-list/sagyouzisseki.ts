@@ -87,15 +87,4 @@ export const sagyouzisseki = [
     storeLink: 'https://www.goobike.com/web/search/shop_blog.php?client_id=8800585',
     menteLink: '/after/work/21467',
   },
-  {
-    cont: '修理/カスタム',
-    maker: 'ハーレーダビッドソン',
-    syasyu: 'FLHTCUTG トライグ',
-    messe: 'FLHTCUTG トライグライドウルトラ　トライク　カスタム　ミルウ',
-    price: 25300,
-    name: '（株）バイクプラザヤマノ',
-    image: './assets/img/sagamihara.jpeg',
-    storeLink: 'https://www.goobike.com/web/search/shop_blog.php?client_id=8800585',
-    menteLink: '/after/work/21467',
-  },
 ]
