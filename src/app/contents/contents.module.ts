@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ContentsComponent } from './contents.component';
 import { ContentsMainComponent } from './contents.main/contents.main.component';
+import { ModalComponent } from '../modal/modal.component';
 
 const routes: Routes = [
   {
@@ -10,6 +11,11 @@ const routes: Routes = [
     children: [
       {
         path: '', component: ContentsMainComponent,
+        // children: [
+        //   {
+        //     path: 'modal', component: ModalComponent,
+        //   }
+        // ]
       }
     ]
   }

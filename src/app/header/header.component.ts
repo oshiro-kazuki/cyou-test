@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { menuList } from '../menulist';
+import { menuList } from '../link-list/menulist';
 
 @Component({
   selector: 'app-header',

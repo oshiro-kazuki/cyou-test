@@ -1,0 +1,82 @@
+.modal-header {
+  height: 50px;
+}
+
+.modal-header-categoris {
+  height: 100%;
+  display: flex;
+}
+
+.modal-header-categori {
+  width: 250px;
+  height: 100%;
+  border-bottom: 1px solid #ccc;
+  position: relative;
+}
+
+.modal-header-categori::before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  right: -10px;
+  z-index: 1;
+  border-top: 25px solid transparent;
+  border-bottom: 25px solid transparent;
+  border-left: 10px solid #ccc;
+}
+
+.modal-header-categori::after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  right: -9px;
+  z-index: 1;
+  border-top: 25px solid transparent;
+  border-bottom: 25px solid transparent;
+  border-left: 10px solid white;
+}
+
+.modal-header-categori > p {
+  /* color: red; */
+  font-size: 14px;
+  /* font-weight: bold; */
+  text-align: center;
+  line-height: 50px;
+}
+
+.modal-header-categori > p::before {
+  content: '>';
+  color: #ccc;
+  font-size: 20px;
+  font-weight: bold;
+  position: absolute;
+  top: -1px;
+  right: 10%;
+}
+
+.modal-header-categori-kensaku {
+  width: 250px;
+  height: 100%;
+  background-color: red;
+  border-bottom: 1px solid #ccc;
+  position: relative;
+  color: white;
+}
+
+.modal-header-categori-kensaku > p {
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  line-height: 50px;
+}
+
+.modal-header-categori-kensaku > span {
+  position: absolute;
+  top: 25%;
+  left: 20%;
+}
+
+
+

@@ -1,0 +1,41 @@
+.overlay {
+    margin: 0;
+    padding: 0;
+    background-color: rgba(0,0,0,0.4);
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 2;
+  }
+
+  .modal-full {
+    width: 1000px;
+    height: 600px;
+    margin: 0 auto;
+    z-index: 3;
+    position: fixed;
+    top: 150px;
+    left: 0;
+    right: 0;
+  }
+
+  .modal-close-btn {
+    width: 35px;
+    height: 35px;
+    text-align: center;
+    line-height: 32px;
+    background-color: white;
+    color: red;
+    font-size: 30px;
+    font-weight: bold;
+    margin: 0 0 10px auto;
+    border-radius: 5px;
+  }
+  
+  .modal {
+    height: 500px;
+    width: 1000px;
+    background-color: white;
+  }
