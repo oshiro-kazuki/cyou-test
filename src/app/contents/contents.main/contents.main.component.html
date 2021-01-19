@@ -60,7 +60,7 @@
 
     <div class="review-panels">
       <div [ngClass]="{'panel-area': indexR0, 'panel-area1': indexR1}">
-      <!-- <div class="panel-area"> -->
+        <!-- <div class="panel-area"> -->
         <div *ngFor="let p of reviewList; let i = index" [className]="minR <= i && i <= maxR ? 'panel' : 'panel1'">
           <a class="review-panel" href="{{p.link}}">
             <div class="review-image" style="background-image: url({{p.image}});"></div>
@@ -79,21 +79,22 @@
         </div>
       </div>
 
-      <div class="review-btn review-btn-left"  (click)="onClickReviewPrev()">&lt;</div>
+      <div class="review-btn review-btn-left" (click)="onClickReviewPrev()">&lt;</div>
       <div class="review-btn review-btn-right" (click)="onClickReviewNext()">&gt;</div>
     </div>
   </div>
 
 
   <div class="main-sagyou">
-      <div class="area-title">
-        <h2>作業実績</h2>
-        <p class="font16">バイクの整備方法やカスタム例がわかる</p>
-      </div>
+    <div class="area-title">
+      <h2>作業実績</h2>
+      <p class="font16">バイクの整備方法やカスタム例がわかる</p>
+    </div>
 
     <div class="review-panels sagyou-panels">
       <div [ngClass]="{'sagyou-panel-area': indexS0, 'panel-area1': indexS1}">
-        <div *ngFor="let p of sagyouzisseki; let i = index" [className]="minS <= i && i <= maxS ? 'sagyou-panel' : 'panel1'">
+        <div *ngFor="let p of sagyouzisseki; let i = index"
+          [className]="minS <= i && i <= maxS ? 'sagyou-panel' : 'panel1'">
           <div class="panel2">
             <a class="review-panel" href="{{p.menteLink}}">
               <div class="review-image" style="background-image: url({{p.image}});">
@@ -135,7 +136,7 @@
       <a *ngFor="let k of kensakuZyouken" href="{{k.link}}" class="link-form">{{k.title}}</a>
     </div>
   </div>
-  
+
 
   <div class="main-sibori">
     <div class="area-title">
@@ -146,20 +147,19 @@
       <div class="sibori-waku">
         <div class="sibori-contents-areas">
           <a class="sibori-contents">
-            <div class="sibori-content">
+            <div class="sibori-content" (click)="modalArea()">
               <div class="sibori-area-logo">□</div>
               <div class="sibori-area-textarea">
                 <p>エリアを検索</p>
                 <span>全国</span>
               </div>
             </div>
-  
+
             <div class="sibori-area-right">&gt;</div>
           </a>
 
           <a [className]="isAreaSelect ? 'sibori-contents-area' : 'sibori-contents-area1'"
-            (click)="onClickAreaSelect()"
-          >
+            (click)="onClickAreaSelect()">
             <div class="sibori-content">
               <div class="sibori-area-logo-area">✔︎</div>
               <div class="sibori-area-textarea">
@@ -196,17 +196,14 @@
     </div>
 
     <a [className]="isAreaSelect ? 'area-map font20' : 'display-none'"><span class="material-icons">
-      room
-    </span>現在地から探す</a>
+        room
+      </span>現在地から探す</a>
 
     <a [className]="!isAreaSelect ? 'area-map font20' : 'display-none'"><span class="material-icons">
-      room
-    </span>お店を検索する</a>
+        room
+      </span>お店を検索する</a>
   </div>
 
-</div>
+  <ng-container *ngComponentOutlet="modal"></ng-container>
 
-<div class="footer">
-  <input id="footer_button" type="button" value="open modal" (click)="onClick($event);">
 </div>
-<ng-container *ngComponentOutlet="modal"></ng-container>

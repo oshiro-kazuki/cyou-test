@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { from } from 'rxjs';
 import { menuList } from '../link-list/menulist';
+import { pankuzu } from '../link-list/pankuzu';
 
 @Component({
   selector: 'app-header',
@@ -11,6 +13,8 @@ export class HeaderComponent {
   
   menuList =  menuList;
   viewList: any;
+
+  pankuzu = pankuzu;
 
   onClickView(list: any) {
     if(!this.viewList) {

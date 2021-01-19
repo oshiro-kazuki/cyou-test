@@ -1,0 +1,23 @@
+<div class="modal-area-search">
+    <div class="zenkoku">
+        <label class="check-form">
+            <input name="area" type="radio" value="all" checked>
+            <p>全国</p>
+        </label>
+    </div>
+
+    <div class="" *ngFor="let z of zenkoku; let i = index">
+        <div class="todouhuken" *ngFor="let t of z.area" >
+            <h3>{{t.area}}</h3>
+
+            <div class="kens">
+                <div *ngFor="let k of t.kenmei" class="ken">
+                    <label class="check-form">
+                        <input name="area" type="radio" value="{{k.title}}">
+                        <p>{{k.title}}</p>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

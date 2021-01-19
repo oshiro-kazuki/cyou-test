@@ -1,26 +1,38 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Directive, ViewContainerRef, ComponentFactoryResolver } from '@angular/core';
 import { Subject } from 'rxjs';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
+
 export class ModalService {
+  public vcr!: ViewContainerRef;
+  private currentComponent: any = null;
 
-  // データの変更を通知するためのオブジェクト
-  private closeEventSubject = new Subject<string>();
+  private contentSource: Subject<boolean> = new Subject<boolean>();
+  public content$= this.contentSource.asObservable();
 
-  // Subscribe するためのプロパティ( これでイベント通知をキャッチする )
-  public closeEventObservable$ = this.closeEventSubject.asObservable();
+  constructor(private resolver: ComponentFactoryResolver) { }
 
-  /**
-   * コンストラクタ
-   */
-  constructor() { }
+  open(data: any): void {
+    if (!data) {
+      return;
+    }
 
-  /**
-   * イベント通知のリクエストを処理する( モーダルダイアログを閉じる )
-   */
-  public requestCloseModal() {
-    this.closeEventSubject.next();
+    const factory = this.resolver.resolveComponentFactory(data);
+    const component = this.vcr.createComponent(factory);
+
+    // if other modal container is created
+    if (this.currentComponent) {
+      this.currentComponent.destroy();
+    }
+
+    this.currentComponent = component;
+    this.contentSource.next(true);
+  }
+
+  close(): void {
+    if (this.currentComponent) {
+      this.currentComponent.destroy();
+      this.contentSource.next(false);
+    }
   }
 }

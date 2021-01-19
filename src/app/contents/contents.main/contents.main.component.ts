@@ -1,11 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 
-// モーダルダイアログとして表示するコンポーネント
-import { ModalComponent } from '../../modal/modal.component';
-// モーダルダイアログを閉じるためのイベントを管理するサービス
-import { ModalService } from '../../service/modal.service';
-
 import { areasLeft } from '../../area/left/areas';
 import { areasRight } from '../../area/right/areas';
 import { serviceMenu } from '../../link-list/service-menu';
@@ -13,7 +8,9 @@ import { reviewList } from '../../link-list/reviewList';
 import { sagyouzisseki } from '../../link-list/sagyouzisseki';
 import { kensakuZyouken } from '../../link-list/kensaku-zyouken';
 import { createHostListener } from '@angular/compiler/src/core';
-import { menuList } from 'src/app/link-list/menulist';
+import { ModalComponent } from '../../modal/modal.component';
+import { ModalService } from '../../service/modal.service';
+import { ModalAreaComponent } from '../../modal/modal.area/modal.area.component';
 
 @Component({
   selector: 'app-contents-main',
@@ -29,40 +26,23 @@ export class ContentsMainComponent implements OnInit {
   sagyouzisseki = sagyouzisseki;
   kensakuZyouken = kensakuZyouken;
 
-  // モーダルダイアログが閉じた際のイベントをキャッチするための subscription
-  private subscription!: Subscription;
-  // ngComponentOutlet にセットするためのプロパティ
-  public modal: any = null;
+  // public modal: any = null;
+  modal = ModalComponent;
 
   constructor(
     private modalService: ModalService,
   ) { }
 
-  ngOnInit() {
-    // モーダルダイアログを閉じた際のイベントを処理する
-    this.subscription = this.modalService.closeEventObservable$.subscribe(
-      () => {
-        // プロパティ modal に null をセットすることでコンポーネントを破棄する
-        // このタイミングで ModalComponent では ngOnDestroy が走る
-        this.modal = null;
-      }
-    );
+  ngOnInit() {}
+
+  modalArea(): void {
+    // this.setModal();
+    // this.modalService.open(ModalAreaComponent);
   }
 
-  /*終了処理 */
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
-  }
-
-  /*クリックイベント */
-  public onClick($event: any) {
-    this.setModal();
-  }
-
-  /*モーダルダイアログを表示する*/
-  private setModal() {
-    this.modal = ModalComponent;
-  }
+  // private setModal() {
+  //   this.modal = ModalComponent;
+  // }
 
 
   setStar() {
