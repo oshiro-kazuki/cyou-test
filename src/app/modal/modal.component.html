@@ -1,11 +1,16 @@
 <div class="overlay">
-    <div class="modal-full">
-      <div class="modal-close">
-        <div class="modal-close-btn">×</div>
-      </div>
-  
-      <div class="modal">
+  <div class="modal-full">
+    <div class="modal-close">
+      <div class="modal-close-btn" (click)="close()">×</div>
+    </div>
 
-      </div>
+    <div class="modal">
+      <ng-container *ngComponentOutlet="modalHeader"></ng-container>
+      
+      <!-- <ng-container *ngComponentOutlet="modalArea"></ng-container> -->
+      <ng-container *ngComponentOutlet="modalMenu"></ng-container>
+
+      <ng-container *ngComponentOutlet="modalFooter"></ng-container>
     </div>
   </div>
+</div>

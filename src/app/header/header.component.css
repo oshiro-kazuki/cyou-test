@@ -94,3 +94,17 @@
   width: 100%;
   margin: 5px 0;
 }
+
+.header-root > a {
+  color: blueviolet;
+}
+
+.header-root > a > span {
+  color: black;
+  font-size: 16px;
+  padding: 0 10px;
+}
+
+.header-root > p {
+  align-self: center;
+}

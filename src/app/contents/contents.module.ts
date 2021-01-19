@@ -3,7 +3,11 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ContentsComponent } from './contents.component';
 import { ContentsMainComponent } from './contents.main/contents.main.component';
+import { HttpClientModule } from '@angular/common/http';
+
 import { ModalComponent } from '../modal/modal.component';
+import { ModalService } from '../service/modal.service';
+import { ModalAreaComponent } from '../modal/modal.area/modal.area.component';
 
 const routes: Routes = [
   {
@@ -11,11 +15,6 @@ const routes: Routes = [
     children: [
       {
         path: '', component: ContentsMainComponent,
-        // children: [
-        //   {
-        //     path: 'modal', component: ModalComponent,
-        //   }
-        // ]
       }
     ]
   }
@@ -25,12 +24,18 @@ const routes: Routes = [
   declarations: [
     ContentsComponent,
     ContentsMainComponent,
+    ModalComponent,
+    ModalAreaComponent,
   ],
   imports: [
     RouterModule.forChild(routes),
-    CommonModule
+    CommonModule,
+    HttpClientModule,
   ],
-  providers: [],
-  bootstrap: []
+  providers: [ModalService],
+  bootstrap: [],
+  entryComponents: [
+    ModalAreaComponent,
+  ]
 })
 export class ContentsModule { }

@@ -1,0 +1,80 @@
+.modal-area-search {
+    width: 100%;
+    height: 100%;
+    padding-top: 30px;
+    padding-bottom: 100px;
+    overflow: scroll;
+
+}
+
+.zenkoku {
+    height: 50px;
+    width: 940px;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    margin: 0 auto;
+}
+
+.check-form {
+    width: 100%;
+    height: 100%;
+    padding: 0 10px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+input[type="radio"] {
+    width: 30px;
+    height: 30px;
+}
+
+.modal-area-search p {
+    font-size: 14px;
+    font-weight: 500;
+    padding-left: 20px;
+}
+
+.todouhuken {
+    padding-top: 50px;
+    width: 940px;
+    margin: 0 auto;
+}
+
+.todouhuken > h3 {
+    font-size: 18px;
+    padding: 20px 0;
+    position: relative;
+    display: inline-block;
+}
+
+.todouhuken > h3::before {
+    content: '';
+    height: 3px;
+    width: 100%;
+    background-color: red;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.kens {
+    display: flex;
+    flex-wrap: wrap;
+    border-top: 1px solid #ccc;
+}
+
+.ken {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    width: 50%;
+    height: 50px;
+    border-bottom: 1px solid #ccc;
+    border-collapse: collapse;
+}
+
+.ken:nth-child(odd) {
+    border-right: 1px solid #ccc;
+}

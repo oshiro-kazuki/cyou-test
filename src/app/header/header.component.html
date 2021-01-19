@@ -41,13 +41,12 @@
     </ul>
   </div>
 
-  <!-- ルート表示 -->
+  <!-- パンクズ表示 -->
   <div class="header-root">
-    <p *ngFor="let b = breadcumbs">
-      <span [routerLink]="b.url" routerLinkActive="router-link-active">
-        {{b.label}}
-      </span>
-    </p>
+    <a href="{{p.link}}" *ngFor="let p of pankuzu">{{p.page}}
+      <span>&gt;</span>
+    </a>
+    <p>メンテナンスTOP</p>
   </div>
 
 
