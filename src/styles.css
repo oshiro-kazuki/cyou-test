@@ -73,3 +73,17 @@ ul {
 .display-none {
   display: none;
 }
+
+.check-form {
+  width: 100%;
+  height: 100%;
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+input[type="radio"] {
+  width: 30px;
+  height: 30px;
+}

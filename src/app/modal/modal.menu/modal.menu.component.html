@@ -1,3 +1,11 @@
 <div class="modal-menu-search">
-   aaa
+    <h3>メニュー選択</h3>
+    <div class="menu-btns">
+        <div *ngFor="let i of afterMenu" class="menu-btn">
+            <label class="check-form">
+                <input name="area" type="radio" value="{{i.title}}">
+                <p>{{i.title}}</p>
+            </label>
+        </div>
+    </div>
 </div>

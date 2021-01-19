@@ -7,6 +7,7 @@ import { ModalHeaderComponent } from './modal.header/modal.header.component';
 import { ModalFooterComponent } from './modal.footer/modal.footer.component';
 import { ModalAreaComponent } from './modal.area/modal.area.component';
 import { ModalMenuComponent } from './modal.menu/modal.menu.component';
+import { ModalMakerComponent } from './modal.maker/modal.maker.component';
 
 @Component({
   selector: 'app-modal',
@@ -22,8 +23,24 @@ export class ModalComponent implements OnInit, AfterViewInit, OnDestroy {
   modalFooter = ModalFooterComponent;
   modalArea = ModalAreaComponent;
   modalMenu = ModalMenuComponent;
+  modalMaker = ModalMakerComponent;
 
-  constructor(private modal: ModalService) { }
+  
+  constructor(private modal: ModalService) {}
+  
+  isModalOpen = this.modal.isModalOpen;
+  isModalSelect = this.modal.isModalSelect;
+
+  modalOpneArea() {
+    this.modal.modalArea();
+  }
+
+  modalOpneMenu() {
+    this.modal.modalArea();
+  }
+  modalOpneMaker() {
+    this.modal.modalArea();
+  }
 
   ngAfterViewInit() {
     this.modal.vcr = this.vcr;

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { from } from 'rxjs';
+import { ModalService } from '../../service/modal.service'
 
 @Component({
   selector: 'app-modal-header',
@@ -7,7 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ModalHeaderComponent implements OnInit {
 
-  constructor() {}
+  constructor(private modal: ModalService) {}
+  
+  isModalOpen = this.modal.isModalOpen;
+
+  modalOpneArea() {
+    this.modal.modalArea();
+  }
+
+  // modalOpneMenu() {
+  //   this.modal.modalmenu();
+  // }
+  // modalOpneMaker() {
+  //   this.modal.modalArea();
+  // }
 
   ngOnInit() {}
 
