@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 
+import { afterMenu } from '../../link-list/after-menu';
+
 @Component({
   selector: 'app-modal-menu',
   templateUrl: './modal.menu.component.html',
@@ -7,5 +9,7 @@ import { Component } from '@angular/core';
 })
 
 export class ModalMenuComponent {
+  afterMenu = afterMenu;
 
+  
 }

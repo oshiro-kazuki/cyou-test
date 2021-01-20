@@ -1,0 +1,23 @@
+<div class="modal-maker-search">
+    <h3>メーカー・排気量選択</h3>
+    <div class="select-contents">
+        <div class="select-content">
+            <h3>メーカー</h3>
+            <select (change)="onMakerSelected($event.target.value)">
+                <option *ngFor="let i of maker" value="{{i.haiki}}">
+                    {{i.maker}}
+                </option>
+            </select>
+        </div>
+
+        <!-- <div class="select-content">
+            <h3>排気量</h3>
+            <select (change)="onHaikiSelected($event.target.value)">
+                <option *ngFor="let i of makerSelected" value="{{i.syasyu}}">
+                    {{i.haiki}}
+                </option>
+            </select>
+        </div> -->
+
+    </div>
+</div>

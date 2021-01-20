@@ -12,6 +12,7 @@
   height: 100%;
   border-bottom: 1px solid #ccc;
   position: relative;
+  cursor: pointer;
 }
 
 .modal-header-categori::before {
@@ -36,6 +37,16 @@
   border-top: 25px solid transparent;
   border-bottom: 25px solid transparent;
   border-left: 10px solid white;
+}
+
+.modal-header-categori:hover {
+  background-color: rgb(238, 188, 188);
+}
+
+.modal-header-categori:hover::after {
+  border-top: 25px solid transparent;
+  border-bottom: 25px solid transparent;
+  border-left: 10px solid rgb(238, 188, 188);
 }
 
 .modal-header-categori > p {
@@ -63,6 +74,7 @@
   border-bottom: 1px solid #ccc;
   position: relative;
   color: white;
+  cursor: pointer;
 }
 
 .modal-header-categori-kensaku > p {

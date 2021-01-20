@@ -12,10 +12,29 @@ export class ModalService {
 
   constructor(private resolver: ComponentFactoryResolver) { }
 
+  isModalOpen = false;
+  // isModalSelect: any;
+  isModalSelect = false;
+
+  modalArea() {
+    // this.isModalSelect = 2;
+    this.isModalSelect = true;
+  }
+
+  // modalMenu() {
+  //   this.isModalSelect = 3;
+  // }
+
+  // modalmMker() {
+  //   this.isModalSelect = 4;
+  // }
+
   open(data: any): void {
     if (!data) {
       return;
     }
+    
+    this.modalOpen();
 
     const factory = this.resolver.resolveComponentFactory(data);
     const component = this.vcr.createComponent(factory);
@@ -30,9 +49,14 @@ export class ModalService {
   }
 
   close(): void {
+    this.modalOpen();
     if (this.currentComponent) {
       this.currentComponent.destroy();
       this.contentSource.next(false);
     }
+  }
+
+  modalOpen() {
+    this.isModalOpen ? this.isModalOpen = true : this.isModalOpen = false
   }
 }

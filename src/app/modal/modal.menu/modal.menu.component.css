@@ -1,0 +1,32 @@
+.modal-menu-search {
+    max-width: 854px;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+}
+
+.modal-menu-search > h3 {
+    padding: 20px 0;
+}
+
+.menu-btns {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.menu-btn {
+    width: calc(50% - 7px);
+    height: 55px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.check-form {
+    padding: 0 20px;
+}
+
+.check-form > p {
+    font-size: 14px;
+    font-weight: 700;
+    padding-left: 10px;
+}

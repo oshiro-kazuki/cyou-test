@@ -7,7 +7,10 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { ModalComponent } from '../modal/modal.component';
 import { ModalService } from '../service/modal.service';
+import { ModalHeaderComponent } from '../modal/modal.header/modal.header.component';
 import { ModalAreaComponent } from '../modal/modal.area/modal.area.component';
+import { ModalMenuComponent } from '../modal/modal.menu/modal.menu.component';
+import { ModalMakerComponent } from '../modal/modal.maker/modal.maker.component';
 
 const routes: Routes = [
   {
@@ -25,7 +28,10 @@ const routes: Routes = [
     ContentsComponent,
     ContentsMainComponent,
     ModalComponent,
+    ModalHeaderComponent,
     ModalAreaComponent,
+    ModalMenuComponent,
+    ModalMakerComponent,
   ],
   imports: [
     RouterModule.forChild(routes),
@@ -36,6 +42,8 @@ const routes: Routes = [
   bootstrap: [],
   entryComponents: [
     ModalAreaComponent,
+    ModalMenuComponent,
+    ModalMakerComponent,
   ]
 })
 export class ContentsModule { }
