@@ -4,8 +4,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { HeaderComponent } from './header/header.component';
-import { ModalService } from './service/modal.service';
 import { from } from 'rxjs';
+import { AdService } from './modal/ad.service';
 
 @NgModule({
   declarations: [
@@ -16,7 +16,7 @@ import { from } from 'rxjs';
     BrowserModule,
     AppRoutingModule,
   ],
-  providers: [ModalService],
+  providers: [AdService],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

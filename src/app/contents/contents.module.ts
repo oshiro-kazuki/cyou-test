@@ -1,13 +1,15 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ContentsComponent } from './contents.component';
-import { ContentsMainComponent } from './contents.main/contents.main.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule }   from '@angular/forms';
 
+import { ContentsComponent } from './contents.component';
+import { ContentsMainComponent } from './contents.main/contents.main.component';
 import { ModalComponent } from '../modal/modal.component';
-import { ModalService } from '../service/modal.service';
+import { ModalDirevtive } from '../modal/modal.directive';
+import { AdService } from '../modal/ad.service';
+
 import { ModalHeaderComponent } from '../modal/modal.header/modal.header.component';
 import { ModalAreaComponent } from '../modal/modal.area/modal.area.component';
 import { ModalMenuComponent } from '../modal/modal.menu/modal.menu.component';
@@ -30,6 +32,7 @@ const routes: Routes = [
     ContentsComponent,
     ContentsMainComponent,
     ModalComponent,
+    ModalDirevtive,
     ModalHeaderComponent,
     ModalAreaComponent,
     ModalMenuComponent,
@@ -41,12 +44,12 @@ const routes: Routes = [
     HttpClientModule,
     FormsModule,
   ],
-  providers: [ModalService],
+  providers: [AdService],
   bootstrap: [],
   entryComponents: [
-    ModalAreaComponent,
-    ModalMenuComponent,
-    ModalMakerComponent,
+    // ModalAreaComponent,
+    // ModalMenuComponent,
+    // ModalMakerComponent,
   ]
 })
 export class ContentsModule { }

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalAreaComponent } from '../modal.area/modal.area.component';
 
 @Component({
   selector: 'app-modal-footer',
@@ -9,12 +8,7 @@ import { ModalAreaComponent } from '../modal.area/modal.area.component';
 export class ModalFooterComponent implements OnInit {
   isChecked = true;
 
-  constructor(
-    // private modalAreaComponent: ModalAreaComponent
-  ) {}
+  constructor() {}
 
   ngOnInit() {}
-
-  
-
 }

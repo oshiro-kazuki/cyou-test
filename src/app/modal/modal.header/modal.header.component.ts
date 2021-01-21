@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { from } from 'rxjs';
-import { ModalService } from '../../service/modal.service'
+
+import { select } from './select';
+// import { ModalComponent } from '../modal.component';
 
 @Component({
   selector: 'app-modal-header',
@@ -9,21 +11,15 @@ import { ModalService } from '../../service/modal.service'
 })
 export class ModalHeaderComponent implements OnInit {
 
-  constructor(private modal: ModalService) {}
-  
-  isModalOpen = this.modal.isModalOpen;
+  select = select;
 
-  modalOpneArea() {
-    this.modal.modalArea();
-  }
-
-  // modalOpneMenu() {
-  //   this.modal.modalmenu();
-  // }
-  // modalOpneMaker() {
-  //   this.modal.modalArea();
-  // }
+  constructor(
+    // private modal: ModalComponent
+  ) {}
 
   ngOnInit() {}
 
+  selected() {
+    // this.modal.click();
+  }
 }

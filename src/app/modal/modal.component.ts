@@ -1,13 +1,10 @@
-import { Component, OnInit, OnDestroy, AfterViewInit, ViewContainerRef, ViewChild } from '@angular/core';
-import { from, Subscription } from 'rxjs/';
+import { Component, OnInit, OnDestroy, ViewChild, Input, ComponentFactoryResolver } from '@angular/core';
+import { from } from 'rxjs/';
 
-// モーダルダイアログを閉じるためのイベントを管理するサービス
-import { ModalService } from '../service/modal.service';
+import { ModalDirevtive } from './modal.directive';
 import { ModalHeaderComponent } from './modal.header/modal.header.component';
 import { ModalFooterComponent } from './modal.footer/modal.footer.component';
-import { ModalAreaComponent } from './modal.area/modal.area.component';
-import { ModalMenuComponent } from './modal.menu/modal.menu.component';
-import { ModalMakerComponent } from './modal.maker/modal.maker.component';
+import { AdItem } from './ad-item';
 
 @Component({
   selector: 'app-modal',
@@ -15,57 +12,58 @@ import { ModalMakerComponent } from './modal.maker/modal.maker.component';
   styleUrls: ['./modal.component.css']
 })
 
-export class ModalComponent implements OnInit, AfterViewInit, OnDestroy {
-  @ViewChild('inner', { read: ViewContainerRef }) vcr: any;
-  private subscription: any = Subscription;
-  public display = 'none';
+export class ModalComponent implements OnInit, OnDestroy {
+  // コンポーネントをabsへ格納
+  @Input() ads!: AdItem[];
+
+  currentAdIndex = -1;
+  @ViewChild(ModalDirevtive, {static: true}) adHost!: ModalDirevtive;
+  interval: any;
+
+  index: any;
+  adItem: any;
+
   modalHeader = ModalHeaderComponent;
   modalFooter = ModalFooterComponent;
-  modalArea = ModalAreaComponent;
-  modalMenu = ModalMenuComponent;
-  modalMaker = ModalMakerComponent;
-
   
-  constructor(private modal: ModalService) {}
-  
-  isModalOpen = this.modal.isModalOpen;
-  isModalSelect = this.modal.isModalSelect;
-
-  modalOpneArea() {
-    this.modal.modalArea();
-  }
-
-  modalOpneMenu() {
-    this.modal.modalArea();
-  }
-  modalOpneMaker() {
-    this.modal.modalArea();
-  }
-
-  ngAfterViewInit() {
-    this.modal.vcr = this.vcr;
-  }
+  constructor(
+    private componentFactoryResolver: ComponentFactoryResolver,
+  ) {}
 
   ngOnInit() {
-    this.subscription = this.modal.content$.subscribe(
-      value => {
-        if (value) {
-          this.display = '';
-        } else {
-          this.display = 'none';
-        }
-      });
-  }
-
-  containerClick($event: any) {
-    $event.stopPropagation();
-  }
-
-  close() {
-    this.modal.close();
+    this.loadComponent();
+    this.getAds();
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    clearInterval(this.interval);
   }
+
+  // click(i:any) {
+  //   this.adItem = this.ads[i];
+  //   console.log(this.ads)
+  // }
+
+  loadComponent() {
+    
+    this.currentAdIndex = (this.currentAdIndex + 1) % this.ads.length;
+    const adItem = this.ads[this.currentAdIndex];
+
+    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(adItem.component);
+
+    // ビューコンテナーへアクセスする
+    const viewContainerRef = this.adHost.viewContainerRef;
+    viewContainerRef.clear();
+
+    viewContainerRef.createComponent<any>(componentFactory);
+  }
+
+  getAds() {
+    this.interval = setInterval(() => {
+      this.loadComponent();
+    }, 3000);
+  }
+
+  close(){};
+
 }
