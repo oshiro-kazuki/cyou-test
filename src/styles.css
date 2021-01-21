@@ -81,9 +81,5 @@ ul {
   display: flex;
   align-items: center;
   cursor: pointer;
-}
-
-input[type="radio"] {
-  width: 30px;
-  height: 30px;
+  position: relative;
 }

@@ -5,7 +5,6 @@ import { AppComponent } from './app.component';
 
 import { HeaderComponent } from './header/header.component';
 import { ModalService } from './service/modal.service';
-import { ModalAreaComponent } from './modal/modal.area/modal.area.component';
 import { from } from 'rxjs';
 
 @NgModule({

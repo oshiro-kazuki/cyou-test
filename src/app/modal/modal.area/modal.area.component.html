@@ -1,8 +1,7 @@
 <div class="modal-area-search">
     <div class="zenkoku">
         <label class="check-form">
-            <input name="area" type="radio" value="all" checked>
-            <p>全国</p>
+            <input name="area" type="radio" value="all" title="全国" checked>
         </label>
     </div>
 
@@ -11,10 +10,13 @@
             <h3>{{t.area}}</h3>
 
             <div class="kens">
-                <div *ngFor="let k of t.kenmei" class="ken">
+                <div *ngFor="let k of t.kenmei; let i = index" class="ken">
                     <label class="check-form">
-                        <input name="area" type="radio" value="{{k.title}}">
-                        <p>{{k.title}}</p>
+                        <input
+                        name="area"
+                        type="radio"
+                        title="{{k.title}}"
+                        value="{{i}}">
                     </label>
                 </div>
             </div>

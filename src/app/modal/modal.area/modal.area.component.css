@@ -67,3 +67,23 @@
 .ken:nth-child(odd) {
     border-right: 1px solid #ccc;
 }
+
+input[type="radio"] {
+    width: 30px;
+    height: 30px;
+  }
+  
+  input[type='radio']::before {
+    content: attr(title);
+    color: black;
+    font-size: 14px;
+    font-weight: bold;
+    position: absolute;
+    top: 15px;
+    left: 50px;
+  }
+  
+  input[type='radio']:checked::before {
+    content: attr(title);
+    color: red;
+  }

@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { from } from 'rxjs';
 import { maker } from '../../link-list/after-maker/maker';
 
-
 @Component({
   selector: 'app-modal-maker',
   templateUrl: './modal.maker.component.html',
@@ -11,20 +10,23 @@ import { maker } from '../../link-list/after-maker/maker';
 
 export class ModalMakerComponent {
   maker = maker;
-  makerSelected: any = [];
-  haikiSelected: any = [];
+  makerIndex: any;
+  haikiIndex: any;
+  syasyuIndex: any;
+  haikiSelected: any;
+  syasyuSelected: any;
+  itemSelected: any;
 
-  isMaker = true;
-
-  onMakerSelected(e: any) {
-    const a =  Array.from(e);
-    console.log(a);
-
+  onChangeMaker() {
+    this.haikiSelected = this.maker[this.makerIndex].haiki;
   }
 
-  onHaikiSelected(e: any) {
-    this.haikiSelected = e;
-    console.log(this.haikiSelected )
+  onChangeHaiki() {
+    this.syasyuSelected = this.haikiSelected[this.haikiIndex].syasyu;
   }
 
+   onChangeSyasyu() {
+    this.itemSelected = this.syasyuSelected[this.syasyuIndex].name;
+    console.log(this.itemSelected);
+  }
 }
