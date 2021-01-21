@@ -3,21 +3,30 @@
     <div class="select-contents">
         <div class="select-content">
             <h3>メーカー</h3>
-            <select (change)="onMakerSelected($event.target.value)">
-                <option *ngFor="let i of maker" value="{{i.haiki}}">
-                    {{i.maker}}
+            <select [(ngModel)]="makerIndex" ngDefaultControl (change)="onChangeMaker()">
+                <option *ngFor="let m of maker; let i = index" [value]="i">
+                    {{m.maker}}
                 </option>
             </select>
         </div>
 
-        <!-- <div class="select-content">
+        <div class="select-content">
             <h3>排気量</h3>
-            <select (change)="onHaikiSelected($event.target.value)">
-                <option *ngFor="let i of makerSelected" value="{{i.syasyu}}">
-                    {{i.haiki}}
+            <select [(ngModel)]="haikiIndex" ngDefaultControl (change)="onChangeHaiki()">
+                <option *ngFor="let h of haikiSelected; let i = index" [ngValue]="i">
+                    {{h.haiki}}
                 </option>
             </select>
-        </div> -->
+        </div>
+
+        <div class="select-content">
+            <h3>車種<br>(任意)</h3>
+            <select  [(ngModel)]="syasyuIndex" ngDefaultControl (change)="onChangeSyasyu()">
+                <option *ngFor="let s of syasyuSelected; let i = index" [ngValue]="i">
+                    {{s.name}}
+                </option>
+            </select>
+        </div>
 
     </div>
 </div>

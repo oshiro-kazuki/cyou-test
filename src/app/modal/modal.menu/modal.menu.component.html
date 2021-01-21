@@ -1,10 +1,9 @@
 <div class="modal-menu-search">
     <h3>メニュー選択</h3>
     <div class="menu-btns">
-        <div *ngFor="let i of afterMenu" class="menu-btn">
+        <div *ngFor="let m of afterMenu" class="menu-btn">
             <label class="check-form">
-                <input name="area" type="radio" value="{{i.title}}">
-                <p>{{i.title}}</p>
+                <input name="menu" type="checkbox" value="{{m.title}}" title="{{m.title}}">
             </label>
         </div>
     </div>

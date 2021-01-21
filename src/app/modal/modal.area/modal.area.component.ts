@@ -12,11 +12,15 @@ import { from } from 'rxjs';
 
 export class ModalAreaComponent {
   zenkoku = zenkoku;
-  isCurrent = false;
-  // isModalSelect = true;
+  isCurrent : any;
+  
   isModalSelect = this.modalService.isModalSelect;
 
   constructor(
     private modalService: ModalService,
   ) {}
+
+  aaa(a: any) {
+    this.isCurrent = a;
+  }
 }

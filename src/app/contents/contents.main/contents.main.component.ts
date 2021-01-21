@@ -136,4 +136,6 @@ export class ContentsMainComponent implements OnInit {
       this.isAreaSelect = true;
     }
   }
+
+  
 }
