@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
 
-import { areasLeft } from '../../area/left/areas';
-import { areasRight } from '../../area/right/areas';
+import { areasLeft } from '../../link-list/area/left/areas';
+import { areasRight } from '../../link-list/area/right/areas';
 import { serviceMenu } from '../../link-list/service-menu';
 import { reviewList } from '../../link-list/reviewList';
 import { sagyouzisseki } from '../../link-list/sagyouzisseki';
 import { kensakuZyouken } from '../../link-list/kensaku-zyouken';
-import { createHostListener } from '@angular/compiler/src/core';
 import { ModalComponent } from '../../modal/modal.component';
-import { ModalService } from '../../service/modal.service';
-import { ModalAreaComponent } from '../../modal/modal.area/modal.area.component';
+import { AdService } from '../../modal/ad.service';
+import { AdItem } from '../../modal/ad-item';
+// import { ModalAreaComponent } from '../../modal/modal.area/modal.area.component';
+// import { ModalMenuComponent } from '../../modal/modal.menu/modal.menu.component';
 
 @Component({
   selector: 'app-contents-main',
@@ -25,25 +25,17 @@ export class ContentsMainComponent implements OnInit {
   reviewList = reviewList;
   sagyouzisseki = sagyouzisseki;
   kensakuZyouken = kensakuZyouken;
-
-  // public modal: any = null;
+  
   modal = ModalComponent;
+  ads!: AdItem[];
 
   constructor(
-    private modalService: ModalService,
-  ) { }
+    private adService: AdService,
+  ) {}
 
-  ngOnInit() {}
-
-  modalArea(): void {
-    // this.setModal();
-    // this.modalService.open(ModalAreaComponent);
+  ngOnInit() {
+    this.ads = this.adService.getAds();
   }
-
-  // private setModal() {
-  //   this.modal = ModalComponent;
-  // }
-
 
   setStar() {
     const array = [];
@@ -136,6 +128,5 @@ export class ContentsMainComponent implements OnInit {
       this.isAreaSelect = true;
     }
   }
-
   
 }

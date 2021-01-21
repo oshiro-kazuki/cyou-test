@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 
-import { ModalService } from '../../service/modal.service';
-import { zenkoku } from '../../area/zenkoku';
+import { zenkoku } from '../../link-list/area/zenkoku';
 import { from } from 'rxjs';
 
 @Component({
@@ -12,15 +11,6 @@ import { from } from 'rxjs';
 
 export class ModalAreaComponent {
   zenkoku = zenkoku;
-  isCurrent : any;
-  
-  isModalSelect = this.modalService.isModalSelect;
 
-  constructor(
-    private modalService: ModalService,
-  ) {}
-
-  aaa(a: any) {
-    this.isCurrent = a;
-  }
+  constructor() {}
 }

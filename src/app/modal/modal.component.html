@@ -1,4 +1,4 @@
-<div class="overlay" [class.hidden]="isModalOpen">
+<div class="overlay">
   <div class="modal-full">
     <div class="modal-close">
       <div class="modal-close-btn" (click)="close()">×</div>
@@ -7,9 +7,10 @@
     <div class="modal">
       <ng-container *ngComponentOutlet="modalHeader"></ng-container>
       
-      <!-- <ng-container *ngComponentOutlet="modalArea" [class.hidden]="isModalSelect"></ng-container> -->
-      <ng-container *ngComponentOutlet="modalMenu"></ng-container>
-      <ng-container *ngComponentOutlet="modalMaker"></ng-container>
+      <ng-template adHost></ng-template>
+      <!-- <ng-container *ngComponentOutlet="modalArea"></ng-container> -->
+      <!-- <ng-container *ngComponentOutlet="modalMenu"></ng-container> -->
+      <!-- <ng-container *ngComponentOutlet="modalMaker"></ng-container> -->
 
       <ng-container *ngComponentOutlet="modalFooter"></ng-container>
     </div>

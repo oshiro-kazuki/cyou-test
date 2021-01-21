@@ -239,7 +239,6 @@
   background-color: #ccc;
 }
 
-
 .sagyou-store-panel > a {
   color: #4597ea;
   font-size: 12px;
@@ -561,6 +560,7 @@
   background-color: #fff;
   padding: 0 20px;
   border-radius: 3px;
+  cursor: pointer;
 }
 
 .sibori-content {

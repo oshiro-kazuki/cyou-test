@@ -10,6 +10,4 @@ import { afterMenu } from '../../link-list/after-menu';
 
 export class ModalMenuComponent {
   afterMenu = afterMenu;
-
-  
 }

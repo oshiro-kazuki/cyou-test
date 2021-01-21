@@ -1,15 +1,9 @@
 <div class="modal-header">
-  <div class="modal-header-categoris" (click)="modalOpneArea()">
-    <div class="modal-header-categori">
-      <p>エリア選択</p>
-    </div>
-
-    <div class="modal-header-categori">
-      <p>メニュー選択</p>
-    </div>
-
-    <div class="modal-header-categori">
-      <p>メーカー排気量選択</p>
+  <div class="modal-header-categoris">
+    <div 
+    *ngFor="let s of select; let i = index"
+    class="modal-header-categori">
+      <p>{{s}}</p>
     </div>
 
     <div class="modal-header-categori-kensaku">

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { from } from 'rxjs';
+
 import { maker } from '../../link-list/after-maker/maker';
 
 @Component({
@@ -10,9 +11,13 @@ import { maker } from '../../link-list/after-maker/maker';
 
 export class ModalMakerComponent {
   maker = maker;
+  
+  // 取得するインデックスの変数
   makerIndex: any;
   haikiIndex: any;
   syasyuIndex: any;
+
+  // 配列を格納する変数
   haikiSelected: any;
   syasyuSelected: any;
   itemSelected: any;

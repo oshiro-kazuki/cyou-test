@@ -146,8 +146,10 @@
     <div class="sibori-area">
       <div class="sibori-waku">
         <div class="sibori-contents-areas">
-          <a class="sibori-contents">
-            <div class="sibori-content" (click)="modalArea()">
+
+          <!-- エリアを検索 -->
+          <div class="sibori-contents">
+            <div class="sibori-content">
               <div class="sibori-area-logo">□</div>
               <div class="sibori-area-textarea">
                 <p>エリアを検索</p>
@@ -156,9 +158,9 @@
             </div>
 
             <div class="sibori-area-right">&gt;</div>
-          </a>
+          </div>
 
-          <a [className]="isAreaSelect ? 'sibori-contents-area' : 'sibori-contents-area1'"
+          <div [className]="isAreaSelect ? 'sibori-contents-area' : 'sibori-contents-area1'"
             (click)="onClickAreaSelect()">
             <div class="sibori-content">
               <div class="sibori-area-logo-area">✔︎</div>
@@ -166,10 +168,11 @@
                 <p>現在地から選択</p>
               </div>
             </div>
-          </a>
+          </div>
         </div>
 
-        <a class="sibori-contents">
+        <!-- メニューで検索 -->
+        <div class="sibori-contents">
           <div class="sibori-content">
             <div class="sibori-area-logo">□</div>
             <div class="sibori-area-textarea">
@@ -179,9 +182,10 @@
           </div>
 
           <div class="sibori-area-right">&gt;</div>
-        </a>
+        </div>
 
-        <a class="sibori-contents">
+        <!-- メーカー検索 -->
+        <div class="sibori-contents">
           <div class="sibori-content">
             <div class="sibori-area-logo">□</div>
             <div class="sibori-area-textarea">
@@ -191,7 +195,7 @@
           </div>
 
           <div class="sibori-area-right">&gt;</div>
-        </a>
+        </div>
       </div>
     </div>
 
@@ -204,6 +208,7 @@
       </span>お店を検索する</a>
   </div>
 
-  <ng-container *ngComponentOutlet="modal"></ng-container>
+  <app-modal [ads]="ads"></app-modal>
+  <!-- <ng-container *ngComponentOutlet="modal"></ng-container> -->
 
 </div>
