@@ -23,16 +23,15 @@ export class ContentsMainComponent implements OnInit {
   reviewList = reviewList;
   sagyouzisseki = sagyouzisseki;
   kensakuZyouken = kensakuZyouken;
-  
-  modal = ModalComponent;
-  ads!: AdItem[];
+  // modal = ModalComponent;
+  modal!: AdItem[];
 
   constructor(
     private modalService: ModalService,
   ) {}
 
   ngOnInit() {
-    this.ads = this.modalService.setAds();
+    this.modal = this.modalService.setAds();
   }
 
   setStar() {
@@ -118,10 +117,8 @@ export class ContentsMainComponent implements OnInit {
     }
   }
 
-  modalOpen() {
-    this.modalService.open();
-    console.log(this.modalService.isView);
-    alert('click');
+  modalOpen(index: any) {
+    this.modalService.setIndex(index);
   }
   
   isAreaSelect = true;

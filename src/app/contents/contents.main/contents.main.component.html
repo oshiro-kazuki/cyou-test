@@ -60,7 +60,6 @@
 
     <div class="review-panels">
       <div [ngClass]="{'panel-area': indexR0, 'panel-area1': indexR1}">
-        <!-- <div class="panel-area"> -->
         <div *ngFor="let p of reviewList; let i = index" [className]="minR <= i && i <= maxR ? 'panel' : 'panel1'">
           <a class="review-panel" href="{{p.link}}">
             <div class="review-image" style="background-image: url({{p.image}});"></div>
@@ -147,7 +146,7 @@
       <div class="sibori-waku">
         <!-- エリアを検索 -->
         <div class="sibori-contents-areas">
-          <div class="sibori-contents" (click)="modalOpen()">
+          <div class="sibori-contents" (click)="modalOpen(0)">
             <div class="sibori-content">
               <div class="sibori-area-logo">□</div>
               <div class="sibori-area-textarea">
@@ -171,7 +170,7 @@
         </div>
 
         <!-- メニューで検索 -->
-        <div class="sibori-contents">
+        <div class="sibori-contents" (click)="modalOpen(1)">
           <div class="sibori-content">
             <div class="sibori-area-logo">□</div>
             <div class="sibori-area-textarea">
@@ -184,7 +183,7 @@
         </div>
 
         <!-- メーカー検索 -->
-        <div class="sibori-contents">
+        <div class="sibori-contents" (click)="modalOpen(2)">
           <div class="sibori-content">
             <div class="sibori-area-logo">□</div>
             <div class="sibori-area-textarea">
@@ -207,7 +206,8 @@
       </span>お店を検索する</a>
   </div>
 
-  <app-modal [ads]="ads"></app-modal>
-  <!-- <ng-container *ngComponentOutlet="modal"></ng-container> -->
+  <!-- [ads]は@Inputからads -->
+  <app-modal [ads]="modal"></app-modal>
 
+  <!-- <ng-container *ngComponentOutlet="modal"></ng-container> -->
 </div>
