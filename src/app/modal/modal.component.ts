@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy, ViewChild, Input, ComponentFactoryResolver } from '@angular/core';
-import { from } from 'rxjs/';
+import { from, observable, Observable,of } from 'rxjs/';
 
 import { ModalDirevtive } from './modal.directive';
 import { ModalHeaderComponent } from './modal.header/modal.header.component';
@@ -17,31 +17,38 @@ export class ModalComponent implements OnInit, OnDestroy {
   // コンポーネントをabsへ格納
   @Input() ads!: AdItem[];
   adItem: any;
-  @ViewChild(ModalDirevtive, {static: true}) adHost!: ModalDirevtive;
+  @ViewChild(ModalDirevtive, { static: true }) adHost!: ModalDirevtive;
   modalHeader = ModalHeaderComponent;
   modalFooter = ModalFooterComponent;
-  isView = true;
-  // isView = this.modalService.isView;
   index = 0;
-  
+  // isView = false;
+  // testObservable:Observable<number>;
+
   constructor(
     private componentFactoryResolver: ComponentFactoryResolver,
-    private modalService: ModalService,
-    ) {
-      
-    }
-    
-    ngOnInit() {
-    // this.isView = this.modalService.isView;
+    public modalService: ModalService,
+  ) {
     // this.loadComponent();
-    console.log(this.isView)
+    this.modalService.valueChanges().subscribe(value => {
+      this.loadComponent();
+    })
+  }
+
+  ngOnInit() {
+  
   }
 
   ngOnDestroy() {}
 
+  // ngAfterViewChecked(){
+  //   this.loadComponent();
+  // }
+
   //コンポーネントを読み込む
   loadComponent() {
-    const adItem = this.ads[this.index];
+    if (this.ads == null) return;
+    const adItem = this.ads[this.modalService.getIndex()];
+    console.log(this.modalService.getIndex());
     //各コンポーネントのインスタンスを作成
     const componentFactory = this.componentFactoryResolver.resolveComponentFactory(adItem.component);
     // ビューコンテナーへアクセスする
@@ -49,16 +56,16 @@ export class ModalComponent implements OnInit, OnDestroy {
     viewContainerRef.clear();
     //ロードされたコンポーネントへの参照を返す
     viewContainerRef.createComponent<any>(componentFactory);
+
   }
 
-  click(index: any){
-    this.index = index;
-    this.loadComponent();
-  }
+  // setIndex(index: any) {
+  //   this.index = index;
+  //   this.loadComponent();
+  // }
 
-  close(){
+  close() {
     this.modalService.close();
     this.ngOnDestroy();
   };
-  
 }
