@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { from } from 'rxjs';
-import { menuList } from '../link-list/menulist';
+import { menuList } from '../link-list/header-menu-list/menulist';
 import { pankuzu } from '../link-list/pankuzu';
 
 @Component({
@@ -17,11 +17,7 @@ export class HeaderComponent {
   pankuzu = pankuzu;
 
   onClickView(list: any) {
-    if(!this.viewList) {
-      this.viewList = list;
-    } else {
-      this.viewList = null;
-    }
+    !this.viewList ? this.viewList = list : this.viewList = null;
   }
 
 }

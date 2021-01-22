@@ -20,29 +20,19 @@ export class ModalComponent implements OnInit, OnDestroy {
   @ViewChild(ModalDirevtive, { static: true }) adHost!: ModalDirevtive;
   modalHeader = ModalHeaderComponent;
   modalFooter = ModalFooterComponent;
-  index = 0;
-  // isView = false;
-  // testObservable:Observable<number>;
 
   constructor(
     private componentFactoryResolver: ComponentFactoryResolver,
     public modalService: ModalService,
   ) {
-    // this.loadComponent();
     this.modalService.valueChanges().subscribe(value => {
       this.loadComponent();
     })
   }
 
-  ngOnInit() {
-  
-  }
+  ngOnInit() {}
 
   ngOnDestroy() {}
-
-  // ngAfterViewChecked(){
-  //   this.loadComponent();
-  // }
 
   //コンポーネントを読み込む
   loadComponent() {
@@ -56,13 +46,7 @@ export class ModalComponent implements OnInit, OnDestroy {
     viewContainerRef.clear();
     //ロードされたコンポーネントへの参照を返す
     viewContainerRef.createComponent<any>(componentFactory);
-
   }
-
-  // setIndex(index: any) {
-  //   this.index = index;
-  //   this.loadComponent();
-  // }
 
   close() {
     this.modalService.close();
