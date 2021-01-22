@@ -166,6 +166,7 @@
   margin: 0 auto;
 }
 
+
 .review-panels,
 .sagyou-panels {
   padding-top: 100px;
@@ -185,16 +186,7 @@
   width: 900px;
   display: flex;
   overflow: visible;
-  transition-property: transform;
-  transition-duration: .3s;
-}
-
-.panel-area1 {
-  margin: 0 auto;
-  width: 900px;
-  display: flex;
-  overflow: visible;
-  transform: translate(-900px);
+  transform: translate(0px);
   transition-property: transform;
   transition-duration: .3s;
 }
@@ -215,6 +207,11 @@
 .sagyou-panel {
   height: 352px;
   position: relative;
+}
+
+.panel-hidden {
+  opacity: .2;
+  pointer-events: none;
 }
 
 .panle2 {
@@ -285,13 +282,6 @@
   100%{
     border: 2px solid red;
   }
-}
-
-.panel1 {
-  opacity: .2;
-  transition: .2s linear;
-  margin: 0 7px;
-  pointer-events: none;
 }
 
 .review-image {

@@ -34,6 +34,8 @@ export class ContentsMainComponent implements OnInit {
     this.modal = this.modalService.setAds();
   }
 
+  // 新着レビュー
+  // レビューリストの空星設定
   setStar() {
     const array = [];
     const STAR = 5
@@ -51,70 +53,55 @@ export class ContentsMainComponent implements OnInit {
     return array;
   }
 
-  indexR0 = true;
-  indexR1 = false;
-  minR = 0;
-  maxR = 3;
+  revMin = 0
+  revMax = 3;
+  revSlide = 0;
+
+  revMaxlength() {
+    const len = this.reviewList.length -1;
+    return len;
+  }
 
   onClickReviewPrev() {
-    if (this.indexR1) {
-      this.indexR0 = true;
-      this.indexR1 = false;
-    }
+    if(this.revMin === 0) return;
 
-    this.minR -= 4;
-    this.maxR -= 4;
-    if (this.minR <= 0) {
-      this.minR = 0;
-      this.maxR = 3;
-    }
+    this.revSlide += 900;
+    this.revMin -= 4;
+    this.revMax -= 4;
+  }
+  
+  onClickReviewNext(){
+    if(this.revMax === this.revMaxlength()) return;
+
+    this.revSlide -= 900;
+    this.revMin += 4;
+    this.revMax += 4;
   }
 
-  onClickReviewNext() {
-    if (this.indexR0) {
-      this.indexR0 = false;
-      this.indexR1 = true;
-    }
+  // 作業実績
+  sagMin = 0
+  sagMax = 3;
+  sagSlide = 0;
 
-    this.minR += 4;
-    this.maxR += 4;
-    if (this.maxR >= this.reviewList.length - 1) {
-      this.maxR = this.reviewList.length - 1;
-      this.minR = this.reviewList.length - 4;
-    }
+  sagMaxlength() {
+    const len = this.sagyouzisseki.length -1;
+    return len;
   }
-
-  indexS0 = true;
-  indexS1 = false;
-  minS = 0;
-  maxS = 3;
 
   onClickSagyouPrev() {
-    if (this.indexS1) {
-      this.indexS0 = true;
-      this.indexS1 = false;
-    }
+    if(this.sagMin === 0) return;
 
-    this.minS -= 4;
-    this.maxS -= 4;
-    if (this.minS <= 0) {
-      this.minS = 0;
-      this.maxS = 3;
-    }
+    this.sagSlide += 900;
+    this.sagMin -= 4;
+    this.sagMax -= 4;
   }
 
   onClickSagyouNext() {
-    if (this.indexS0) {
-      this.indexS0 = false;
-      this.indexS1 = true;
-    }
+    if(this.sagMax === this.sagMaxlength()) return;
 
-    this.minS += 4;
-    this.maxS += 4;
-    if (this.maxS >= this.reviewList.length - 1) {
-      this.maxS = this.reviewList.length - 1;
-      this.minS = this.reviewList.length - 4;
-    }
+    this.sagSlide -= 900;
+    this.sagMin += 4;
+    this.sagMax += 4;
   }
 
   modalOpen(index: any) {
