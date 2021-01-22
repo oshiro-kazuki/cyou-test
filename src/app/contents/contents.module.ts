@@ -11,6 +11,7 @@ import { ModalDirevtive } from '../modal/modal.directive';
 import { ModalService } from '../modal/modal.service';
 
 import { ModalHeaderComponent } from '../modal/modal.header/modal.header.component';
+import { ModalFooterComponent } from '../modal/modal.footer/modal.footer.component';
 import { ModalAreaComponent } from '../modal/modal.area/modal.area.component';
 import { ModalMenuComponent } from '../modal/modal.menu/modal.menu.component';
 import { ModalMakerComponent } from '../modal/modal.maker/modal.maker.component';
@@ -34,6 +35,7 @@ const routes: Routes = [
     ModalComponent,
     ModalDirevtive,
     ModalHeaderComponent,
+    ModalFooterComponent,
     ModalAreaComponent,
     ModalMenuComponent,
     ModalMakerComponent,

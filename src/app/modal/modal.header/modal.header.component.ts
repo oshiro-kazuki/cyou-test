@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { from } from 'rxjs';
 
 import { select } from './select';
-// import { ModalComponent } from '../modal.component';
 import { ModalService } from '../modal.service';
 
 @Component({
@@ -15,7 +14,6 @@ export class ModalHeaderComponent implements OnInit {
   select = select;
 
   constructor(
-    // private modalComponent: ModalComponent,
     private modalService: ModalService,
   ) {}
 
@@ -23,7 +21,6 @@ export class ModalHeaderComponent implements OnInit {
 
   click(index: any) {
     this.modalService.setIndex(index);
-    // this.modalComponent.setIndex(index);
   }
 
 }
