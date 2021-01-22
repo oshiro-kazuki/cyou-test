@@ -1,9 +1,10 @@
 <div class="contents-main">
+  <!-- 強い味方のイメージ -->
   <div class="main-image">
     強い味方
   </div>
 
-
+  <!-- エリアから探す -->
   <div class="area-search">
     <div class="area-title">
       <h2>お店をエリアから探す</h2>
@@ -38,6 +39,7 @@
   </div>
 
 
+  <!-- メニューから探す -->
   <div class="menu-search">
     <div class="area-title">
       <h2>お店をメニューから探す</h2>
@@ -53,21 +55,27 @@
   </div>
 
 
+  <!-- 新着レビュー -->
   <div class="main-review">
     <div class="area-title">
       <h2>新着レビュー</h2>
     </div>
 
     <div class="review-panels">
-      <div [ngClass]="{'panel-area': indexR0, 'panel-area1': indexR1}">
-        <div *ngFor="let p of reviewList; let i = index" [className]="minR <= i && i <= maxR ? 'panel' : 'panel1'">
+      <div class="panel-area" 
+      [ngStyle]="{'transform': 'translateX(' + revSlide + 'px)'}">
+        <div *ngFor="let p of reviewList; let i = index"
+        class="panel"
+        [class.panel-hidden]="!(revMin <= i && i <= revMax)">
           <a class="review-panel" href="{{p.link}}">
-            <div class="review-image" style="background-image: url({{p.image}});"></div>
+            <div class="review-image"
+             style="background-image: url({{p.image}});"></div>
             <div class="review-contents">
               <h5 class="font16 review-name">{{p.name}}</h5>
               <div class="review-star font18 flex-row">
                 <div class="flex-row star-area">
-                  <img src="../../../assets/img/star0.PNG" class="star0" *ngFor="let s of setStar()">
+                  <img src="../../../assets/img/star0.PNG"
+                   class="star0" *ngFor="let s of setStar()">
                 </div>
                 {{p.hoshi | number:'1.1-1'}}
               </div>
@@ -78,12 +86,15 @@
         </div>
       </div>
 
-      <div class="review-btn review-btn-left" (click)="onClickReviewPrev()">&lt;</div>
-      <div class="review-btn review-btn-right" (click)="onClickReviewNext()">&gt;</div>
+      <div class="review-btn review-btn-left"
+       (click)="onClickReviewPrev()">&lt;</div>
+      <div class="review-btn review-btn-right"
+       (click)="onClickReviewNext()">&gt;</div>
     </div>
   </div>
 
 
+  <!-- 作業実績 -->
   <div class="main-sagyou">
     <div class="area-title">
       <h2>作業実績</h2>
@@ -91,9 +102,11 @@
     </div>
 
     <div class="review-panels sagyou-panels">
-      <div [ngClass]="{'sagyou-panel-area': indexS0, 'panel-area1': indexS1}">
+      <div class="sagyou-panel-area"
+      [ngStyle]="{'transform': 'translateX(' + sagSlide + 'px)'}">
         <div *ngFor="let p of sagyouzisseki; let i = index"
-          [className]="minS <= i && i <= maxS ? 'sagyou-panel' : 'panel1'">
+        class="sagyou-panel"
+        [class.panel-hidden]="!(sagMin <= i && i <= sagMax)">
           <div class="panel2">
             <a class="review-panel" href="{{p.menteLink}}">
               <div class="review-image" style="background-image: url({{p.image}});">
@@ -126,6 +139,7 @@
   </div>
 
 
+  <!-- 検索条件 -->
   <div class="main-kensaku-zyouken">
     <div class="area-title">
       <h2>検索条件リンク</h2>
@@ -137,6 +151,7 @@
   </div>
 
 
+  <!-- 絞り込み検索 -->
   <div class="main-sibori">
     <div class="area-title">
       <h2>お店を絞り込む</h2>
@@ -206,6 +221,7 @@
       </span>お店を検索する</a>
   </div>
 
+  <!-- モーダル -->
   <!-- [ads]は@Inputからads -->
   <app-modal [ads]="modal"></app-modal>
 
