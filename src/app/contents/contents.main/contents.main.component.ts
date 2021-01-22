@@ -7,10 +7,8 @@ import { reviewList } from '../../link-list/reviewList';
 import { sagyouzisseki } from '../../link-list/sagyouzisseki';
 import { kensakuZyouken } from '../../link-list/kensaku-zyouken';
 import { ModalComponent } from '../../modal/modal.component';
-import { AdService } from '../../modal/ad.service';
+import { ModalService } from '../../modal/modal.service';
 import { AdItem } from '../../modal/ad-item';
-// import { ModalAreaComponent } from '../../modal/modal.area/modal.area.component';
-// import { ModalMenuComponent } from '../../modal/modal.menu/modal.menu.component';
 
 @Component({
   selector: 'app-contents-main',
@@ -30,11 +28,11 @@ export class ContentsMainComponent implements OnInit {
   ads!: AdItem[];
 
   constructor(
-    private adService: AdService,
+    private modalService: ModalService,
   ) {}
 
   ngOnInit() {
-    this.ads = this.adService.getAds();
+    this.ads = this.modalService.setAds();
   }
 
   setStar() {
@@ -118,6 +116,12 @@ export class ContentsMainComponent implements OnInit {
       this.maxS = this.reviewList.length - 1;
       this.minS = this.reviewList.length - 4;
     }
+  }
+
+  modalOpen() {
+    this.modalService.open();
+    console.log(this.modalService.isView);
+    alert('click');
   }
   
   isAreaSelect = true;

@@ -8,7 +8,7 @@ import { ContentsComponent } from './contents.component';
 import { ContentsMainComponent } from './contents.main/contents.main.component';
 import { ModalComponent } from '../modal/modal.component';
 import { ModalDirevtive } from '../modal/modal.directive';
-import { AdService } from '../modal/ad.service';
+import { ModalService } from '../modal/modal.service';
 
 import { ModalHeaderComponent } from '../modal/modal.header/modal.header.component';
 import { ModalAreaComponent } from '../modal/modal.area/modal.area.component';
@@ -44,7 +44,7 @@ const routes: Routes = [
     HttpClientModule,
     FormsModule,
   ],
-  providers: [AdService],
+  providers: [ModalService],
   bootstrap: [],
   entryComponents: [
     // ModalAreaComponent,

@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 
 import { HeaderComponent } from './header/header.component';
 import { from } from 'rxjs';
-import { AdService } from './modal/ad.service';
+import { ModalService } from './modal/modal.service';
 
 @NgModule({
   declarations: [
@@ -16,7 +16,7 @@ import { AdService } from './modal/ad.service';
     BrowserModule,
     AppRoutingModule,
   ],
-  providers: [AdService],
+  providers: [ModalService],
   bootstrap: [AppComponent],
 })
 export class AppModule { }
