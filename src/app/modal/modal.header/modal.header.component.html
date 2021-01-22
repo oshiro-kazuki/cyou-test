@@ -2,7 +2,8 @@
   <div class="modal-header-categoris">
     <div 
     *ngFor="let s of select; let i = index"
-    class="modal-header-categori">
+    class="modal-header-categori"
+    (click)="click(i)">
       <p>{{s}}</p>
     </div>
 

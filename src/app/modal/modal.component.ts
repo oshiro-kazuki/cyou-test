@@ -5,6 +5,7 @@ import { ModalDirevtive } from './modal.directive';
 import { ModalHeaderComponent } from './modal.header/modal.header.component';
 import { ModalFooterComponent } from './modal.footer/modal.footer.component';
 import { AdItem } from './ad-item';
+import { ModalService } from './modal.service';
 
 @Component({
   selector: 'app-modal',
@@ -15,55 +16,49 @@ import { AdItem } from './ad-item';
 export class ModalComponent implements OnInit, OnDestroy {
   // コンポーネントをabsへ格納
   @Input() ads!: AdItem[];
-
-  currentAdIndex = -1;
-  @ViewChild(ModalDirevtive, {static: true}) adHost!: ModalDirevtive;
-  interval: any;
-
-  index: any;
   adItem: any;
-
+  @ViewChild(ModalDirevtive, {static: true}) adHost!: ModalDirevtive;
   modalHeader = ModalHeaderComponent;
   modalFooter = ModalFooterComponent;
+  isView = true;
+  // isView = this.modalService.isView;
+  index = 0;
   
   constructor(
     private componentFactoryResolver: ComponentFactoryResolver,
-  ) {}
-
-  ngOnInit() {
-    this.loadComponent();
-    this.getAds();
-  }
-
-  ngOnDestroy() {
-    clearInterval(this.interval);
-  }
-
-  // click(i:any) {
-  //   this.adItem = this.ads[i];
-  //   console.log(this.ads)
-  // }
-
-  loadComponent() {
+    private modalService: ModalService,
+    ) {
+      
+    }
     
-    this.currentAdIndex = (this.currentAdIndex + 1) % this.ads.length;
-    const adItem = this.ads[this.currentAdIndex];
+    ngOnInit() {
+    // this.isView = this.modalService.isView;
+    // this.loadComponent();
+    console.log(this.isView)
+  }
 
+  ngOnDestroy() {}
+
+  //コンポーネントを読み込む
+  loadComponent() {
+    const adItem = this.ads[this.index];
+    //各コンポーネントのインスタンスを作成
     const componentFactory = this.componentFactoryResolver.resolveComponentFactory(adItem.component);
-
     // ビューコンテナーへアクセスする
     const viewContainerRef = this.adHost.viewContainerRef;
     viewContainerRef.clear();
-
+    //ロードされたコンポーネントへの参照を返す
     viewContainerRef.createComponent<any>(componentFactory);
   }
 
-  getAds() {
-    this.interval = setInterval(() => {
-      this.loadComponent();
-    }, 3000);
+  click(index: any){
+    this.index = index;
+    this.loadComponent();
   }
 
-  close(){};
-
+  close(){
+    this.modalService.close();
+    this.ngOnDestroy();
+  };
+  
 }
